@@ -42,12 +42,19 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Applicant Login') }}</a>
                             </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
+                            @if(session()->get('employer_id'))
+                            <li class="nav-item">
+                                <a class="btn btn-primary nav-link" href="{{route('jobpost.index')}}">{{ __('Job Post') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{route('employer.logout')}}">{{ __('Logout') }}</a>
+                            </li>
+                            @else
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('login.index') }}">{{ __('Employeer Login') }}</a>
+                            </li>
                             @endif
                         @else
                             <li class="nav-item dropdown">

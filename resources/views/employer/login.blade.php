@@ -5,10 +5,10 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Applicant Login') }}</div>
+                <div class="card-header">{{ __('Employre Login') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
+                    <form method="POST" action="{{route('employer.login')}}">
                         @csrf
 
                         <div class="form-group row">
@@ -62,7 +62,7 @@
                                         {{ __('Forgot Your Password?') }}
                                     </a>
                                 @endif
-                                <p><a href="{{ route('register') }}"><strong>Sign Up</strong>&nbsp;</a>For new Applicant</p>
+                                <p><a href="{{ route('register.index') }}"><strong>Sign Up</strong>&nbsp;</a>For new Applicant</p>
                             </div>
 
                         </div>

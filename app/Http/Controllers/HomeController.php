@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Employer;
+use App\JobPost;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -11,10 +13,10 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    /*public function __construct()
     {
         $this->middleware('auth');
-    }
+    }*/
 
     /**
      * Show the application dashboard.
@@ -23,6 +25,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $TotalPosts = Employer::with('jobposts')->latest()->get();
+        return view('home', compact('TotalPosts'));
+    }
+    public function jobDetails($slug)
+    {
+        $TotalPost = JobPost::with('employer')
+                             ->where('slug', $slug)
+                             ->first();
+        return view('jobpost/post-details', compact('TotalPost'));
     }
 }

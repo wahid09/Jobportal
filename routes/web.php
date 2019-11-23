@@ -14,3 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/user-profile', 'userProfileController@index')->name('user-profile.index');
+Route::post('/user-profile', 'userProfileController@store')->name('user-profile.store');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
